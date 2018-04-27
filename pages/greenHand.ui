@@ -100,7 +100,7 @@
       </ui-summary>
 
     </ui-view>
-    <ui-fixed-view bottom="0" right="0" left="0">
+    <ui-fixed-view bottom="56" right="0" left="0">
       <ui-view style="background-color:#fff">
         <ui-view class="text">这款产品非常抢手，今日已有
           <ui-text>3641</ui-text>人购买</ui-view>
