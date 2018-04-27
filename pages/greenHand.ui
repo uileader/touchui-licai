@@ -1,7 +1,8 @@
-<!--greenHand.ui-->
 <template>
+
+
   <ui-page>
-    <ui-view class="top_tip" ui:show="{{ isTip }}">
+    <ui-view class="top_tip" ui:show="{{ isTip   }}">
       <ui-view class="title">定期理财最优质产品</ui-view>
       <ui-row height="40">
         <ui-col vertical-align="middle" align="right">
@@ -70,21 +71,7 @@
       <ui-view class="ruler_wrap">
         <ui-view class="shift_to">我要转入(元)</ui-view>
         <ui-view class="ruler_win">
-        <ui-ruler
-          height="35"
-          key-line-height="10"
-          line-height="5"
-          min="0"
-          max="100000"
-          key-step="1000"
-          step="100"
-          number-size="12"
-          line-width="1"
-          step-width='5'
-          pointer-width="1"
-          value="{{into}}"
-          value-style="{{valueStyle}}"
-        ></ui-ruler>
+          <ui-ruler height="35" key-line-height="10" line-height="5" min="0" max="100000" key-step="1000" step="100" number-size="12" line-width="1" step-width="5" pointer-width="1" value="{{into}}" value-style="{{valueStyle}}"></ui-ruler>
         </ui-view>
         <ui-view class="earnings">总计可得(元)</ui-view>
         <ui-view class="money">0.00</ui-view>
@@ -113,13 +100,16 @@
       </ui-summary>
 
     </ui-view>
-    <ui-fixed-view bottom="57" right="0" left="0">
+    <ui-fixed-view bottom="0" right="0" left="0">
       <ui-view style="background-color:#fff">
-        <ui-view class="text">这款产品非常抢手，今日已有<ui-text>3641</ui-text>人购买</ui-view>
+        <ui-view class="text">这款产品非常抢手，今日已有
+          <ui-text>3641</ui-text>人购买</ui-view>
         <ui-view class="buy">立即购买</ui-view>
       </ui-view>
     </ui-fixed-view>
   </ui-page>
+
+
 </template>
 
 <script>
@@ -127,17 +117,17 @@
 export default {
   config: {
     navigationBarVisible: true,
-    statusBarColor:"black",
-    backgroundColor: "#F9F9F9",
-    title: "小白理财",
-    navigationBarTitleText: "小白理财"
+    statusBarColor: 'black',
+    backgroundColor: '#F9F9F9',
+    title: '小白理财',
+    navigationBarTitleText: '小白理财'
   },
-  data () {
+
+  data() {
     return {
-      column:[
-        {
-          title:'产品类型',
-          content:'养老保险'
+      column: [{
+          title: '产品类型',
+          content: '养老保险'
         },
         {
           title: '产品名称',
@@ -156,145 +146,159 @@ export default {
           content: '用户至少在赎回开放日前一天预约赎回，该产品美格30天为一个赎回开放日，最近一次赎回开放日为2018-02-14。预约成功后，资金将会在指定赎回开放日后1个交易日内转入原支付账户（具体时间视银行而定），如遇节假日顺延，节假日期间仍享受收益。'
         }
       ],
-      isTip:true,
-      into:0,
+      isTip: true,
+      into: 0,
       isApp: ui.IS_APP,
-      valueStyle:{
-        color:'#F6620F',
-        fontSize:'28px',
-        top:'-54px',
+      valueStyle: {
+        color: '#F6620F',
+        fontSize: '28px',
+        top: '-54px',
         borderBottom: '1px dashed #E0E0E0',
-        padding:'0 10px',
-        left:'50%',
+        padding: '0 10px',
+        left: '50%',
         transform: 'translate(-50%, 0%)'
       }
     }
   },
+
+  mounted() {},
+
   methods: {
-    close(){
-      this.isTip=false
+    bindchange(e) {
+      console.log(e)
+      this.into = e
+    },
+
+    // 扫一扫
+    code() {
+      ui.setStatusBarStyle({
+        style: 'light'
+      })
+      ui.scanCode({
+        backgroundColor: '#000',
+        color: '#fff',
+        success: res => {
+          console.log(res)
+          ui.showToast({
+            title: '扫到了' + res.result + ',开心不～'
+          })
+        },
+        complete() {
+          ui.setStatusBarStyle({
+            style: 'dark'
+          })
+        }
+      })
+    },
+    share() {
+      if (this.isApp) {
+        ui.app.shareMask = true
+        ui.app.href =
+          'http://www.uileader.com/touchui_jdfinance/#/pages/share/greenHand/greenHand'
+      }
     },
     navigateBack() {
       ui.navigateBack()
     },
-    share(){
-      if (this.isApp) {
-        ui.app.shareMask = true
-        ui.app.href= 'http://www.uileader.com/touchui_jdfinance/#/pages/share/greenHand/greenHand'
-      }
-    },
-    // 扫一扫
-    code(){
-      ui.setStatusBarStyle({ style: 'light' })
-      ui.scanCode({
-        backgroundColor:"#000",
-        color:"#fff",
-        success: (res) => {
-          console.log(res)
-          ui.showToast({ title: '扫到了' + res.result+',开心不～' })
-        },
-        complete(){
-          ui.setStatusBarStyle({ style: 'dark' })
-        }
-      })
-    },
-    bindchange(e){
-      console.log(e)
-      this.into = e
+    close() {
+      this.isTip = false
     }
-  },
-  mounted () {}
+  }
 }
-
 </script>
 
 <style lang="less">
 // greenHand.less
-.nav_bar{
+.nav_bar {
   background: linear-gradient(to right, #3C47FC, #3D66FC);
-  .title{
+  .title {
     color: #fff;
     font-size: 16px;
   }
 }
-.top_tip{
+
+.top_tip {
   background: linear-gradient(to right, #3C47FC, #3D66FC);
   padding: 10px 0;
   position: relative;
-  .title{
+  .title {
     color: #fff;
     font-size: 24px;
     text-align: center;
   }
-  .ui-row{
-    .ui-view{
+  .ui-row {
+    .ui-view {
       font-size: 14px;
       color: #fff;
     }
-    .line{
+    .line {
       height: 14px;
       width: 1px;
       background-color: #556bfd;
     }
   }
-  .close{
+  .close {
     position: absolute;
     top: 5px;
     right: 10px;
   }
 }
-.wrap{
+
+.wrap {
   background-color: #fff;
   padding-bottom: 90px;
 }
-.banner{
+
+.banner {
   padding: 10px 0;
-  .ui-image{
+  .ui-image {
     width: 90%;
     margin: 0 auto;
   }
 }
-.ui-row{
-  &.time{
-    .ui-view{
+
+.ui-row {
+  &.time {
+    .ui-view {
       color: #F77323;
       font-size: 16px;
       line-height: 16px;
     }
-    .line{
+    .line {
       height: 14px;
       width: 1px;
       background-color: #F77323;
     }
   }
 
-  &.time2{
-    .ui-text{
+  &.time2 {
+    .ui-text {
       font-size: 14px;
       color: #A2A2A2;
     }
-    .ui-view{
+    .ui-view {
       font-size: 20px;
       color: #A2A2A2;
     }
-    .center_num{
+    .center_num {
       color: #F77323;
       font-size: 30px;
       font-weight: 500;
     }
   }
 }
-.earnings{
+
+.earnings {
   color: #A2A2A2;
   font-size: 14px;
   text-align: center;
 }
 
-.exclusive{
+.exclusive {
   color: #A2A2A2;
   font-size: 14px;
   text-align: center;
-  .ui-text{
+  .ui-text {
     display: inline-block;
     padding: 0 3px;
     line-height: 20px;
@@ -303,71 +307,75 @@ export default {
   }
 }
 
-.ruler_wrap{
+.ruler_wrap {
   padding-top: 20px;
   text-align: center;
   position: relative;
-  .shift_to{
+  .shift_to {
     text-align: center;
     font-size: 14px;
     color: #969696;
     margin-bottom: 50px;
   }
-  .ruler_win{
+  .ruler_win {
     .mix-1px(0, 0, 1, 0, #d6d6d6);
   }
- 
-  .ui-ruler{
+
+  .ui-ruler {
     margin-bottom: 20px;
   }
-  .money{
+  .money {
     font-size: 20px;
     color: #385AFE;
   }
 }
-.ui-summary{
-   margin-top: 20px;
+
+.ui-summary {
+  margin-top: 20px;
 }
-.column{
+
+.column {
   .mix-1px(1, 0, 1, 0, #d6d6d6);
-  .ui-row{
-    
+  .ui-row {
+
     padding: 10px 0;
-    .ui-text{
+    .ui-text {
       color: #6F6F6F;
       font-size: 14px;
     }
-    .ui-view{
+    .ui-view {
       font-size: 14px;
       color: #A7A7A7;
     }
-    &:nth-child(even){
-      background:#F6F6F6;
+    &:nth-child(even) {
+      background: #F6F6F6;
     }
   }
 }
-.ui-summary .button{
+
+.ui-summary .button {
   .mix-1px(1, 0, 0, 0, #d6d6d6);
 }
-.ui-fixed-view{
+
+.ui-fixed-view {
   width: 100%;
   background-color: #fff;
   text-align: center;
   padding: 0 20px;
   box-shadow: 0px 6px 23px 0px #a0a0a0;
-  .text{
+  .text {
     font-size: 14px;
     color: #A7A7A7;
     line-height: 40px;
-    .ui-text{
+    .ui-text {
       color: #F76814;
     }
   }
-  .buy{
+  .buy {
     line-height: 50px;
     background-color: #4174E9;
     color: #fff;
     font-size: 16px;
   }
 }
-</style>  
+</style>

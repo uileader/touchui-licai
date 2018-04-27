@@ -1,14 +1,13 @@
-<!--coffers.ui-->
 <template>
+
+
   <ui-page>
     <ui-view style="padding-bottom:46px">
       <ui-view class="wrap">
-        <ui-swiper  loop autoplay class="banner banner0">
+        <ui-swiper loop autoplay class="banner banner0">
           <ui-swiper-item ui:for="{{ banner }}">
             <ui-view class="banner_content">
-              <ui-image
-              src="{{ item.src }}"
-              ></ui-image>
+              <ui-image src="{{ item.src }}"></ui-image>
             </ui-view>
           </ui-swiper-item>
         </ui-swiper>
@@ -18,16 +17,14 @@
       </ui-view>
 
       <ui-view class="wrap">
-        <ui-swiper  loop autoplay class="banner banner2">
+        <ui-swiper loop autoplay class="banner banner2">
           <ui-swiper-item ui:for="{{ banner2 }}">
             <ui-view class="banner_content">
-              <ui-image
-              src="{{ item.src }}"
-              ></ui-image>
+              <ui-image src="{{ item.src }}"></ui-image>
             </ui-view>
           </ui-swiper-item>
         </ui-swiper>
-      
+
         <ui-row height="80" class="earnings">
           <ui-col vertical-align="middle" align="left" width="70" space-left="15">
             <ui-view class="icon">
@@ -35,8 +32,8 @@
             </ui-view>
           </ui-col>
           <ui-col vertical-align="middle" align="left">
-            <ui-text block class="title1">每日抢券</ui-text>
-            <ui-text block class="title2">小金库满减购物券</ui-text>
+            <ui-text class="title1">每日抢券</ui-text>
+            <ui-text class="title2">小金库满减购物券</ui-text>
           </ui-col>
           <ui-col vertical-align="middle" align="center" width="3">
             <ui-view class="line"></ui-view>
@@ -47,8 +44,8 @@
             </ui-view>
           </ui-col>
           <ui-col vertical-align="middle" align="left">
-            <ui-text block class="title1">做任务领福利</ui-text>
-            <ui-text block class="title2">领小金库红包</ui-text>
+            <ui-text class="title1">做任务领福利</ui-text>
+            <ui-text class="title2">领小金库红包</ui-text>
           </ui-col>
         </ui-row>
       </ui-view>
@@ -56,62 +53,62 @@
 
       <ui-view class="wrap">
         <ui-view class="column_title">买理财更赚钱</ui-view>
-        <ui-row height="80" class="money_matters" ui:for="{{ moneyMatters }}" bindtap="chart">
+        <ui-row height="80" class="money_matters" bindtap="chart" ui:for="{{ moneyMatters }}">
           <ui-col vertical-align="middle" align="left" space-left="15" width="130">
-            <ui-text block class="title1">{{ item.title1 }}</ui-text>
-            <ui-text block class="title2">{{ item.title1_1 }}</ui-text>
+            <ui-text class="title1">{{ item.title1 }}</ui-text>
+            <ui-text class="title2">{{ item.title1_1 }}</ui-text>
           </ui-col>
           <ui-col vertical-align="middle" align="center" width="3">
             <ui-view class="line"></ui-view>
           </ui-col>
           <ui-col vertical-align="middle" align="left" space-left="15">
-            <ui-text block class="title3">{{ item.title2 }}</ui-text>
-            <ui-text block class="title2">{{ item.title2_2 }}</ui-text>
+            <ui-text class="title3">{{ item.title2 }}</ui-text>
+            <ui-text class="title2">{{ item.title2_2 }}</ui-text>
           </ui-col>
         </ui-row>
-        
+
         <ui-view class="column_list">
-            <ui-view>
-              <ui-icon type="column_list01" size="16" color="#C39A61"></ui-icon>定期
-            </ui-view>
-            <ui-view>
-              <ui-icon type="column_list02" size="16" color="#C39A61"></ui-icon>基金
-            </ui-view>
-            <ui-view>
-              <ui-icon type="gold-bar" size="16" color="#C39A61"></ui-icon>黄金
-            </ui-view>
-            <ui-view>
-              <ui-icon type="column_list03" size="16" color="#C39A61"></ui-icon>机智账户
-            </ui-view>
+          <ui-view>
+            <ui-icon type="column_list01" size="16" color="#C39A61"></ui-icon>定期
+          </ui-view>
+          <ui-view>
+            <ui-icon type="column_list02" size="16" color="#C39A61"></ui-icon>基金
+          </ui-view>
+          <ui-view>
+            <ui-icon type="gold-bar" size="16" color="#C39A61"></ui-icon>黄金
+          </ui-view>
+          <ui-view>
+            <ui-icon type="column_list03" size="16" color="#C39A61"></ui-icon>机智账户
+          </ui-view>
         </ui-view>
       </ui-view>
 
 
       <ui-view class="wrap">
         <ui-view class="column_title">惠生活更轻松</ui-view>
-        <ui-swiper  class="hui_life">
+        <ui-swiper class="hui_life">
           <ui-swiper-item ui:for="{{ huiLife }}" ui:for-item="item">
-            <ui-row height="80" class="earnings life_content"  ui:for="{{ item.lifeContent }}" ui:for-item="item2">
+            <ui-row height="80" class="earnings life_content" ui:for="{{ item.lifeContent }}" ui:for-item="item2">
               <ui-col vertical-align="middle" align="left" width="70" space-left="15">
-                <ui-view class="icon" style="{{{ 'background-color':item2.bgColor1 }}}">
+                <ui-view class="icon" style="background-color: {{ item2.bgColor1 }};">
                   <ui-icon type="{{ item2.icon1 }}" size="24" color="#fff"></ui-icon>
                 </ui-view>
               </ui-col>
               <ui-col vertical-align="middle" align="left">
-                <ui-text block class="title1">{{ item2.title1 }}</ui-text>
-                <ui-text block class="title2">{{ item2.title1_1 }}</ui-text>
+                <ui-text class="title1">{{ item2.title1 }}</ui-text>
+                <ui-text class="title2">{{ item2.title1_1 }}</ui-text>
               </ui-col>
               <ui-col vertical-align="middle" align="center" width="3">
                 <ui-view class="line"></ui-view>
               </ui-col>
               <ui-col vertical-align="middle" align="left" width="70" space-left="15">
-                <ui-view class="icon icon2"  style="{{{ 'background-color':item2.bgColor2 }}}" ui:if="{{ item2.icon2===''?false:true }}">
+                <ui-view class="icon icon2" style="background-color: {{ item2.bgColor2 }};" ui:if="{{ item2.icon2===''?false:true }}">
                   <ui-icon type="{{ item2.icon2 }}" size="24" color="#fff"></ui-icon>
                 </ui-view>
               </ui-col>
               <ui-col vertical-align="middle" align="left">
-                <ui-text block class="title1">{{ item2.title2 }}</ui-text>
-                <ui-text block class="title2">{{ item2.title2_2 }}</ui-text>
+                <ui-text class="title1">{{ item2.title2 }}</ui-text>
+                <ui-text class="title2">{{ item2.title2_2 }}</ui-text>
               </ui-col>
             </ui-row>
           </ui-swiper-item>
@@ -122,12 +119,10 @@
       <ui-view class="wrap">
         <ui-view class="column_title">存钱有理</ui-view>
         <ui-view class="credit_banner">
-          <ui-scroll-view scroll-x height="160">
+          <ui-scroll-view scroll-x style="height: 160px;">
             <ui-view class="content">
               <ui-view class="item" ui:for="{{ credit_banner2 }}">
-                <ui-image
-                  src="{{ item.src }}"
-                ></ui-image>
+                <ui-image src="{{ item.src }}"></ui-image>
               </ui-view>
             </ui-view>
           </ui-scroll-view>
@@ -169,22 +164,25 @@
         </ui-col>
         <ui-col vertical-align="middle" align="center">转入</ui-col>
       </ui-row>
-      
+
     </ui-fixed-view>
-    
+
   </ui-page>
+
+
 </template>
 
 <script>
 // coffers.js
 export default {
   config: {
-    "navigationBarVisible": true,
-    "statusBarColor": "black",
-    "backgroundColor": "#F7F7F7",
-    "navigationBarTitleText": "产品详情"
+    navigationBarVisible: true,
+    statusBarColor: 'black',
+    backgroundColor: '#F7F7F7',
+    navigationBarTitleText: '产品详情'
   },
-  data () {
+
+  data() {
     return {
       autoplay: {
         delay: 7000
@@ -218,31 +216,29 @@ export default {
           src: 'http://images.uileader.com/20180414/6962a8db-3c1c-48e0-92c0-8ab24ff489e3.png'
         }
       ],
-      moneyMatters:[
-        {
-          title1:'5.07%',
-          title1_1:'近七日年化收益率',
-          title2:'产品期限 30天',
-          title2_2:'1000元起购'
+      moneyMatters: [{
+          title1: '5.07%',
+          title1_1: '近七日年化收益率',
+          title2: '产品期限 30天',
+          title2_2: '1000元起购'
         },
         {
           title1: '5.10%',
           title1_1: '业绩比较基准',
           title2: '产品期限 28天',
           title2_2: '低风险 | 0申赎费'
-        }, {
+        },
+        {
           title1: '5.08%+3%',
           title1_1: '七日年化收益率',
           title2: '新年福利 30天理财',
           title2_2: '提前领3.00%奖学金'
         }
       ],
-      huiLife:[
-        {
-          lifeContent:[
-            {
+      huiLife: [{
+          lifeContent: [{
               bgColor1: '#FBB319',
-              icon1:'hui_life01',
+              icon1: 'hui_life01',
               title1: '早起挑战',
               title1_1: '赚现金',
               bgColor2: '#F77916',
@@ -261,10 +257,10 @@ export default {
               title2_2: '极速到账'
             }
           ]
-        }, {
-          lifeContent: [
-            {
-              bgColor1:'#FBB319',
+        },
+        {
+          lifeContent: [{
+              bgColor1: '#FBB319',
               icon1: 'hui_life05',
               title1: '京西饭粒',
               title1_1: '超级返',
@@ -284,9 +280,9 @@ export default {
               title2_2: '便捷生活'
             }
           ]
-        }, {
-          lifeContent: [
-            {
+        },
+        {
+          lifeContent: [{
               bgColor1: '#C1975B',
               icon1: 'hui_life02',
               title1: '小金卡',
@@ -307,9 +303,9 @@ export default {
               title2_2: '去设置'
             }
           ]
-        }, {
-          lifeContent: [
-            {
+        },
+        {
+          lifeContent: [{
               bgColor1: '#C5C5C5',
               icon1: 'hui_life13',
               title1: '还车贷',
@@ -330,7 +326,7 @@ export default {
               title2_2: ''
             }
           ]
-        },
+        }
       ],
       credit_banner2: [{
           src: 'http://images.uileader.com/20180414/19168af9-08c1-49fe-bc0d-366cc3665db8.png'
@@ -347,84 +343,91 @@ export default {
       ]
     }
   },
+
+  mounted() {},
+
   methods: {
+    navigateBack() {
+      ui.navigateBack()
+    },
     chart() {
       ui.navigateTo({
         url: '/pages/chart/chart'
       })
-    },
-    navigateBack() {
-      ui.navigateBack()
     }
-  },
-  mounted () {}
+  }
 }
-
 </script>
 
 <style lang="less">
 // coffers.less
-
-.nav_bar{
+.nav_bar {
   background-color: #fff;
   border-bottom: 1px solid #f7f7f7;
-  .ui-view{
+  .ui-view {
     color: #4E4E4E;
     font-size: 16px;
   }
 }
-.wrap{
+
+.wrap {
   background-color: #fff;
   margin-bottom: 10px;
 }
+
 // swiper分页样式
-.swiper-container-horizontal > .swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction{
+.swiper-container-horizontal>.swiper-pagination-bullets,
+.swiper-pagination-custom,
+.swiper-pagination-fraction {
   bottom: 5px;
 }
-.swiper-pagination-bullet{
+
+.swiper-pagination-bullet {
   width: 5px;
   height: 5px;
 }
-.swiper-pagination-bullet-active{
+
+.swiper-pagination-bullet-active {
   background-color: #989898;
 }
-.banner{
+
+.banner {
   background-color: #fff;
-  .banner_content{
+  .banner_content {
     height: 200px;
     display: flex;
-    align-items:flex-end;
+    align-items: flex-end;
     padding-bottom: 10px;
     margin-bottom: 5px;
-    .ui-image{
+    .ui-image {
       width: 90%;
       margin: 0 auto;
     }
   }
-  .swiper-pagination-bullets{
+  .swiper-pagination-bullets {
     bottom: 0px;
   }
 }
 
 
-.banner2{
-  height:80px;
-  .banner_content{
+.banner2 {
+  height: 80px;
+  .banner_content {
     height: 80px;
   }
 }
-.banner0{
-  height:205px;
+
+.banner0 {
+  height: 205px;
 }
 
 
 
-.experience{
+.experience {
   .mix-flex-center();
   padding: 20px 0;
-  .ui-view{
-    width: 50%;
-    // margin: 25px auto;
+  .ui-view {
+    width: 50%; // margin: 25px auto;
     line-height: 40px;
     border-radius: 25px;
     color: #fff;
@@ -434,37 +437,37 @@ export default {
   }
 }
 
-.earnings{
+.earnings {
   .mix-1px(1, 0, 0, 0, #e4e4e4);
-  .icon{
+  .icon {
     width: 40px;
     height: 40px;
     border-radius: 50%;
     line-height: 40px;
     text-align: center;
     background-color: #F77916;
-    &.icon2{
+    &.icon2 {
       background-color: #FAA428;
     }
   }
-  .line{
+  .line {
     width: 1px;
     height: 50px;
     .mix-1px(0, 1, 0, 0, #e4e4e4);
   }
-  .title1{
+  .title1 {
     color: #2E2E2E;
     font-size: 16px;
     font-weight: 500;
   }
-  .title2{
+  .title2 {
     font-size: 12px;
     color: #9D9D9D;
   }
 }
 
-.column_title{
-  
+.column_title {
+
   color: #2E2E2E;
   padding-left: 15px;
   line-height: 60px;
@@ -472,34 +475,34 @@ export default {
   font-weight: 500;
 }
 
-.money_matters{
+.money_matters {
   .mix-1px(1, 0, 0, 0, #e4e4e4);
-  .line{
+  .line {
     width: 1px;
-    height: 50px;
-    // background-color: #e4e4e4;
+    height: 50px; // background-color: #e4e4e4;
     .mix-1px(0, 1, 0, 0, #e4e4e4);
   }
-  .title1{
+  .title1 {
     color: #F6620F;
     font-size: 20px;
   }
-  .title3{
+  .title3 {
     color: #2E2E2E;
     font-size: 16px;
-    font-weight: 500; 
+    font-weight: 500;
   }
-  .title2{
+  .title2 {
     font-size: 12px;
     color: #9D9D9D;
   }
 }
-.column_list{
+
+.column_list {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   padding: 10px 0 10px 15px;
-  .ui-view{
+  .ui-view {
     border-radius: 4px;
     padding: 8px 10px;
     margin-right: 10px;
@@ -508,66 +511,66 @@ export default {
     font-size: 16px;
     font-weight: 500;
     box-shadow: 0px 0px 15px -3px #dadada;
-    .ui-icon{
+    .ui-icon {
       margin-right: 5px;
     }
   }
 }
 
-.hui_life{
+.hui_life {
   padding-bottom: 20px;
-  z-index:0
+  z-index: 0
 }
 
 
-.credit_banner{
+.credit_banner {
   background-color: #FFFFFF;
   padding: 10px 0;
-  .content{
-    width:655px;
+  .content {
+    width: 655px;
     .mix-clearfix();
-    .item{
+    .item {
       width: 150px;
       height: 150px;
       float: left;
       margin-left: 10px;
       box-shadow: 0px 0px 15px -3px #dadada;
-      .ui-image{
+      .ui-image {
         width: 100%;
       }
-      &:first-child.item{
+      &:first-child.item {
         margin-left: 15px;
       }
     }
-    
+
   }
 }
 
 
-.strategy{
+.strategy {
   .mix-1px(0, 0, 1, 0, #e4e4e4);
-  .ui-view{
+  .ui-view {
     color: #2E2E2E;
     font-size: 18px;
     font-weight: 500;
   }
-  &.strategy2{
+  &.strategy2 {
     .mix-1px(0, 0, 0, 0, #e4e4e4);
   }
 }
 
-.shift{
+.shift {
   width: 100%;
   background-color: #C1975B;
   z-index: 99;
   color: #fff;
   font-size: 16px;
-  .ui-row{
-    .line{
+  .ui-row {
+    .line {
       height: 100%;
       width: 1px;
       background-color: #c7a36d;
     }
   }
 }
-</style> 
+</style>
